@@ -17,7 +17,7 @@
 ​	
 
 ```js
-		var a = "abc";
+var a = "abc";
         switch(a) {
             case 1:
                 alert("number");
@@ -126,7 +126,7 @@ while(num<=100) {
 演示程序
 
 ```javascript
-		var arr1 = new Array(1,2,3);
+var arr1 = new Array(1,2,3);
     var arr2 = new Array(5);
     var arr3 = [1,2,3,4];
 
@@ -156,8 +156,8 @@ while(num<=100) {
 
 演示代码
 
-```
-		var date = new Date();
+```javascript
+var date = new Date();
 
     document.write(date + "<br>");
     document.write(date.toLocaleString() + "<br>");
@@ -166,7 +166,43 @@ while(num<=100) {
 
 4、Math
 
+4.1、创建：
 
+​            \* 特点：Math对象不用创建，直接使用。Math.方法名称
+
+4.2、方法：
+
+​            1）random()：返回 0～1之间的随机数
+
+​            2）ceil(x)：对数进行向上舍入
+
+​            3）floor(x)：对数进行向下舍入
+
+​            4）round(x)：把数四舍五入为最接近的整数
+
+4.3、属性：
+
+​            PI
+
+演示代码
+
+```javascript
+ document.write(Math.PI + "<br>");
+    document.write(Math.random() + "<br>");
+    document.write(Math.ceil(3.12) + "<br>");
+    document.write(Math.floor(4.2) + "<br>");
+    document.write(Math.round(4.5) + "<br>");
+
+    /**
+     * 取 1 ～ 100 之间的随机整数
+     *  1、 Math.random() 产生随机数，范围(0,1]小数
+     *  2、乘以100  -- > [0，99.99999] 小数
+     *  3、舍取小数部分 ， floor -- [0,99]
+     *  4、加 1
+     */
+    var number = Math.floor(Math.random()*100) +  1;
+    document.write(number);
+```
 
 5、Number
 
@@ -176,13 +212,86 @@ while(num<=100) {
 
 
 
-7、RegExp
+7、RegExp ：正则表达式对象
 
+7.1 正则表达式：定义字符串组成的规则
 
+​	1）单个字符：[ ] .如[a]，[ab] 表示a或者b,  [a-zA-Z0_9_]
+
+​			特殊符号表示特殊含义的字符：
+
+​				\d：单个数字字符 [0-9]
+
+​				\w：单个单词字符 [a-zA-Z0-9_]
+
+​	2）量词符号：
+
+​			? ：表示出现0次或1次
+
+​			* ：表示粗线0次或多次
+
+​			+：表示出现1次或者多次
+
+​			例如：\w*表示出现0个或者多个单词字符
+
+​			{m,n}:表示数量大于等于m，小于等于n
+
+​					* m如果缺省 {,n}：最多n次，n如果缺省 {m,}: 最少m次
+
+​	3）开始结束符号：
+
+​			^：开始符号
+
+​			$：结束符号		
+
+7.2 正则对象创建
+
+方式1:  var reg  = new RegExp("正则表达式");
+
+方式2:  var reg = /正则表达式/;
+
+7.3 正则对象的方法
+
+​		test(参数)：验证指定的字符串是否符合正则定义的规范
+
+演示代码
+
+```javascript
+ //字符串中的反斜杠有转义作用，所以需要用\\
+    var reg = new RegExp("^\\w{6,12}$");
+
+    var reg2 = /^\w{6,12}$/;
+
+    var username = "zhangsanerewgrwerwe"
+    
+    var flag = reg.test(username);
+
+    alert(flag);
+```
 
 8、Global
 
+8.1  特点：全局对象，这个Global中封装的方法不需要创建对象，就可以直接调用。 方法名称(参数)
 
+8.2 方法
+
+1）encodeURI()：url编码
+
+2）decodeURI()：url解码
+
+3）encodeURIComponent()：url编码
+
+4）decodeURIComponent(()：url解码
+
+5）parseInt()：将字符串转为数字
+
+		* 逐一判断每一个字符是否是数字，直到不是数字为止，将前面数字部分转为number
+
+6）isNaN()：判断一个值是否是NaN
+
+	* NaN 六亲不认，连自己都不认，NaN参与的==比较都为false
+
+7）：eval()：将JavaScript的字符串转化为脚本执行
 
 9、Function：方法（函数）对象
 
@@ -252,7 +361,7 @@ function add (a , b) {
 ​			例如：需要求任意个数整数的和
 
 ```javascript
-			function add1() {
+function add1() {
             var sum = 0;
             for(var i = 0; i < arguments.length ; i++) {
                 sum += arguments[i];
@@ -267,6 +376,8 @@ function add (a , b) {
 ​            方法名称(实际参数列表);
 
 ## 四、DOM对象
+
+
 
 
 
